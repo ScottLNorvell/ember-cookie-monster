@@ -1,4 +1,4 @@
-# Ember-cookie-monster
+# Ember CookieMonster
 
 This README outlines the details of collaborating on this Ember addon.
 
