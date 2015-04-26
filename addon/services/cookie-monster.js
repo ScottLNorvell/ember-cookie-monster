@@ -8,8 +8,13 @@ export default Ember.Service.extend({
     var cookieDough = this.get('_cookieDough');
     if (Ember.isPresent(cookieDough)) {
       // parse all cookies and set them to cookies object
-    } else {
-      // Do nothing
+      var cookies = this.get('cookies');
+      var cookieDrops = cookieDough.split('; ');
+      var ingredients;
+      for (var i = 0, len = cookieDrops.length; i < len; i++) {
+        ingredients = cookieDrops[i].split('=');
+        cookies.set(ingredients[0], ingredients[1]);
+      }
     }
   }),
 
@@ -23,5 +28,11 @@ export default Ember.Service.extend({
     return document.cookie;
   }),
 
+  eat: function(key) {
+    return this.get('cookies.' + key);
+  },
 
+  bake: function(key, value) {
+    this.set('cookies.' + key, value);
+  }
 });
