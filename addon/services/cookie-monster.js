@@ -1,6 +1,5 @@
 import Ember from 'ember';
 
-
 var on = Ember.on;
 var computed = Ember.computed;
 export default Ember.Service.extend({
@@ -10,10 +9,12 @@ export default Ember.Service.extend({
       // parse all cookies and set them to cookies object
       var cookies = this.get('cookies');
       var cookieDrops = cookieDough.split('; ');
-      var ingredients;
+      var ingredients, key, value;
       for (var i = 0, len = cookieDrops.length; i < len; i++) {
         ingredients = cookieDrops[i].split('=');
-        cookies.set(ingredients[0], ingredients[1]);
+        key = decodeURIComponent(ingredients[0]);
+        value = decodeURIComponent(ingredients[1]);
+        cookies.set(key, value);
       }
     }
   }),
@@ -28,11 +29,33 @@ export default Ember.Service.extend({
     return document.cookie;
   }),
 
-  eat: function(key) {
+  eat(key) {
     return this.get('cookies.' + key);
   },
 
-  bake: function(key, value) {
+  _gatherIngredients(key, value, days) {
+    var expires = '';
+    if (days) {
+      var date = new Date();
+      date.setDate(date.getDate() + days);
+      expires = '; expires=' + date.toGMTString();
+    }
+    return [encodeURIComponent(key), '=', encodeURIComponent(value), expires, '; path=/'].join('');
+  },
+
+  _putInOven(cookie) {
+    document.cookie = cookie;
+  },
+
+  bake(key, value, days) {
     this.set('cookies.' + key, value);
+    var ingredients = this._gatherIngredients(key, value, days);
+    this._putInOven(ingredients);
+  },
+
+  burn(key) {
+    this.set('cookies.' + key, null);
+    var ingredients = this._gatherIngredients(key, '', -1);
+    this._putInOven(ingredients);
   }
 });

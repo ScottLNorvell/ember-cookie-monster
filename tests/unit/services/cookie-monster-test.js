@@ -39,3 +39,10 @@ test('cookies can be baked', function(assert) {
   assert.equal(service.eat('queens'), 'js', 'queens IS js');
   assert.equal(service.get('cookies.queens'), 'js', 'queens IS js');
 });
+
+test('cookies can be burned', function(assert) {
+  var service = this.subject();
+  service.burn('fake_user_id');
+  assert.equal(service.eat('fake_user_id'), null, 'there IS no fake user...');
+  assert.equal(service.get('cookies.fake_user_id'), null, 'there IS no fake user...');
+});
