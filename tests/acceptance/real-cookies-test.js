@@ -38,3 +38,15 @@ test('cookie values show up on the page', function(assert) {
     assert.ok(matcher('Magic').test(find('.the-javascript-cookie').text()), 'the Javascript cookie is displayed');
   });
 });
+
+test('cookie values show up on the page', function(assert) {
+  visit('/');
+  andThen(function() {
+    assert.ok(matcher('Magic').test(find('.the-javascript-cookie').text()), 'precond - the Javascript cookie is displayed');
+  });
+  click('.the-burn-javascript-cookie-button');
+  andThen(function() {
+    assert.ok(!matcher('Magic').test(find('.the-javascript-cookie').text()), 'the Javascript cookie is burned');
+    assert.ok(!matcher('Magic').test(document.cookie), 'the Javascript cookie is gone from `document.cookie`');
+  });
+});
