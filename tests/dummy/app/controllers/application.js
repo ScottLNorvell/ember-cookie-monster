@@ -3,9 +3,9 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   cookieMonster: Ember.inject.service(),
   cookieObject: Ember.computed(
-    'cookieMonster.cookies.Scott', 
-    'cookieMonster.cookies.Queens', 
-    'cookieMonster.cookies.Brooklyn', function() {
+    'cookieMonster.cookies.Scott',
+    'cookieMonster.cookies.Queens',
+    'cookieMonster.cookies.Javascript', function() {
     return JSON.stringify(this.get('cookieMonster.cookies'));
   }),
   actions: {

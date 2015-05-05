@@ -11,10 +11,10 @@
 {{input value=queensCookieValue}}
 <button {{action 'bakeCookie' 'Queens' queensCookieValue}}>Bake Queens Cookie</button>
 <button {{action 'burnCookie' 'Queens'}}>Burn Queens Cookie</button>
-<p class="the-brooklyn-cookie">Brooklyn = {{cookieMonster.cookies.Brooklyn}}</p>
-{{input value=brooklynCookieValue}}
-<button {{action 'bakeCookie' 'Brooklyn' brooklynCookieValue}}>Bake Brooklyn Cookie</button>
-<button {{action 'burnCookie' 'Brooklyn'}}>Burn Brooklyn Cookie</button>
+<p class="the-javascript-cookie">Javascript = {{cookieMonster.cookies.Javascript}}</p>
+{{input class="the-javascript-cookie-input" value=javascriptCookieValue}}
+<button class="the-bake-javascript-cookie-button" {{action 'bakeCookie' 'Javascript' javascriptCookieValue}}>Bake Javascript Cookie</button>
+<button class="the-burn-javascript-cookie-button" {{action 'burnCookie' 'Javascript'}}>Burn Brooklyn Cookie</button>
 
 <h4>All the Cookies...</h4>
 <p>{{cookieObject}}</p>
