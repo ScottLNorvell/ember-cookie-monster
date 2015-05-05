@@ -19,6 +19,18 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'frame-src': "*",
+    'object-src': "*",
+    'script-src': "'self' 'unsafe-inline' 'unsafe-eval' *",
+    'font-src': "'self' *",
+    'connect-src': "'self' *",
+    'img-src': "'self' *",
+    'style-src': "'self' 'unsafe-inline' *",
+    'media-src': "'self' *"
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
