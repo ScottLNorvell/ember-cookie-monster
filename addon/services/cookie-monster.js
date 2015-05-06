@@ -26,5 +26,17 @@ export default Ember.Service.extend({
 
   _cookieDough: computed(function() {
     return document.cookie;
-  })
+  }),
+
+  eat(key) {
+    return this.get('cookies.' + key);
+  },
+
+  bake(key, value) {
+    this.set('cookies.' + key, value);
+  },
+
+  burn(key) {
+    this.set('cookies.' + key, null);
+  }
 });
