@@ -8,7 +8,17 @@ moduleFor('service:cookie-monster', {
   // needs: ['service:foo']
 });
 
-// Replace this with your real tests.
+//                         _
+//                       (`  ).                   _
+//   SMOKE TEST!        (     ).              .:(`  )`.
+//                     _(       '`.          :(   .    )
+//                 .=(`(      .   )     .--  `.  (    ) )
+//     .--.       ((    (..__.:'-'   .+(   )   ` _`  ) )
+//   _(    `.     `(       ) )       (   .  )     (   )  ._
+//  (        )      ` __.:'   )     (   (   ))     `-'.-(`  )
+// ( `  .  )  )  ( )       --'       `- __.'         :(      ))
+//  `--(___.-'  (_.'          .')                    `(    )  ))
+//                           (_  )                     ` __.:'
 test('it exists', function(assert) {
   var service = this.subject();
   assert.ok(service);
