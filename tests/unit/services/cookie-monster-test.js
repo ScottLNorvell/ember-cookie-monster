@@ -2,10 +2,17 @@ import {
   moduleFor,
   test
 } from 'ember-qunit';
+import Ember from 'ember';
 
 moduleFor('service:cookie-monster', {
-  // Specify the other units that are required for this test.
-  // needs: ['service:foo']
+  subject: function(attrs, klass) {
+    klass.reopen({
+      _cookieDough: Ember.computed(function() {
+        return 'scott=awesome; fake_user_id=42';
+      })
+    });
+    return klass.create(attrs);
+  }
 });
 
 //                         _
