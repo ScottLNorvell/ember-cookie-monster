@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "Bind ember stuff to cookies.",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
   "scripts": {
@@ -11,11 +10,14 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "https://github.com/ScottLNorvell/ember-cookie-monster",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ScottLNorvell/ember-cookie-monster"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Scott Norvell <scottlnorvell@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
@@ -41,5 +43,10 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/ScottLNorvell/ember-cookie-monster/issues"
+  },
+  "homepage": "https://github.com/ScottLNorvell/ember-cookie-monster",
+  "main": "index.js"
 }
