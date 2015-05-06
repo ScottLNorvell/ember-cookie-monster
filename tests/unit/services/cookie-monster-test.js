@@ -36,3 +36,18 @@ test('bakes cookies on init', function(assert) {
   assert.equal(service.get('cookies.scott'), 'awesome', 'scott is awesome!');
   assert.equal(service.get('cookies.fake_user_id'), '42', 'user is life the universe and everything');
 });
+
+test('cookies can be eaten', function(assert) {
+  var service = this.subject();
+  assert.ok(service.eat, 'eat exists!');
+});
+
+test('cookies can be baked', function(assert) {
+  var service = this.subject();
+  assert.ok(service.bake, 'bake exists!');
+});
+
+test('cookies can be burned', function(assert) {
+  var service = this.subject();
+  assert.ok(service.burn, 'burn exists!');
+});
