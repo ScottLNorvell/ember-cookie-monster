@@ -25,6 +25,7 @@ export default Ember.Service.extend({
   }),
 
   _cookieDough: computed(function() {
+    // Figure out how to stub...
     return document.cookie;
   }),
 
@@ -32,11 +33,29 @@ export default Ember.Service.extend({
     return this.get('cookies.' + key);
   },
 
-  bake(key, value) {
+  _gatherIngredients(key, value, days) {
+    var expires = '';
+    if (days) {
+      var date = new Date();
+      date.setDate(date.getDate() + days);
+      expires = '; expires=' + date.toGMTString();
+    }
+    return [encodeURIComponent(key), '=', encodeURIComponent(value), expires, '; path=/'].join('');
+  },
+
+  _putInOven(cookie) {
+    document.cookie = cookie;
+  },
+
+  bake(key, value, days) {
     this.set('cookies.' + key, value);
+    var ingredients = this._gatherIngredients(key, value, days);
+    this._putInOven(ingredients);
   },
 
   burn(key) {
     this.set('cookies.' + key, null);
+    var ingredients = this._gatherIngredients(key, '', -1);
+    this._putInOven(ingredients);
   }
 });
