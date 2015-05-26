@@ -1,6 +1,6 @@
 {
   "name": "ember-cookie-monster",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Bind attributes to cookie values in Ember.",
   "directories": {
     "test": "tests"
