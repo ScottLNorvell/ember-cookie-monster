@@ -62,7 +62,7 @@ _(NOTE: this is functionally identical to calling `this.get('cookieMonster.cooki
 var cookieValue = this.get('cookieMonster').eat('cookie-value');
 // does not touch or parse `document.cookie`!
 ```
-### `#.bake(key, value, days)`
+### `#.bake(key, value, days, optionalOptions)`
 ##### Set a cookie value for an optional amount of days:
 ```javascript
   cookieMonster: Ember.inject.service(),
@@ -71,7 +71,7 @@ var cookieValue = this.get('cookieMonster').eat('cookie-value');
       // remember user preference for 10 days
       // sets the cookie expiration date for 10 days in the future
       var days = 10;
-      this.get('cookieMonster').bake(preference, value, days)
+      this.get('cookieMonster').bake(preference, value, days, { domain: 'scott.com' })
     }
   }
 });

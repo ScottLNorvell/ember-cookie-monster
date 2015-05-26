@@ -45,6 +45,20 @@ test('cookies can be baked', function(assert) {
   assert.equal(service.get('cookies.queens'), 'js', 'queens IS js');
 });
 
+test('cookies can accept optional options', function(assert) {
+  assert.expect(4);
+  var service = this.subject({
+    _putInOven(cookie) {
+      assert.ok(/username=scott/.test(cookie), 'actual cookie value is set');
+      assert.ok(/domain=scott\.com/.test(cookie), 'domain for cookie is set');
+      assert.ok(/path=\/user/.test(cookie), 'path for cookie is set');
+    }
+  });
+
+  service.bake('username', 'scott', '10', { domain: 'scott.com', path: '/user' });
+  assert.equal(service.eat('username'), 'scott', 'user name is scott');
+});
+
 test('cookies can be burned', function(assert) {
   assert.expect(3);
   var service = this.subject({

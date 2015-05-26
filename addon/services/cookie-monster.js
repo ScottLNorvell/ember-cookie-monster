@@ -33,23 +33,37 @@ export default Ember.Service.extend({
     return this.get('cookies.' + key);
   },
 
-  _gatherIngredients(key, value, days) {
-    var expires = '';
-    if (days) {
-      var date = new Date();
-      date.setDate(date.getDate() + days);
-      expires = '; expires=' + date.toGMTString();
+  _gatherIngredients(key, value, days, options = {}) {
+    var ingredients = [`${encodeURIComponent(key)}=${encodeURIComponent(value)}`];
+
+    if(!options['path']) {
+      options['path'] = '/';
     }
-    return [encodeURIComponent(key), '=', encodeURIComponent(value), expires, '; path=/'].join('');
+
+    if(!options['expires']) {
+      if(days) {
+        var date = new Date();
+        date.setDate(date.getDate() + days);
+        options['expires'] = date.toGMTString();
+      } else {
+        options['expires'] = '';
+      }
+    }
+
+    let optionalIngredients = Ember.keys(options).map(function(optionKey) {
+      return `${optionKey}=${options[optionKey]}`;
+    });
+
+    return ingredients.concat(optionalIngredients).join('; ');
   },
 
   _putInOven(cookie) {
     document.cookie = cookie;
   },
 
-  bake(key, value, days) {
+  bake(key, value, days, options = {}) {
     this.set('cookies.' + key, value);
-    var ingredients = this._gatherIngredients(key, value, days);
+    var ingredients = this._gatherIngredients(key, value, days, options);
     this._putInOven(ingredients);
   },
 
