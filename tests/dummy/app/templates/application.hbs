@@ -5,16 +5,16 @@
 
 <p class="the-scott-cookie">Scott = {{cookieMonster.cookies.Scott}}</p>
 {{input value=scottCookieValue}}
-<button {{action 'bakeCookie' 'Scott' scottCookieValue}}>Bake Scott Cookie</button>
-<button {{action 'burnCookie' 'Scott'}}>Burn Scott Cookie</button>
+<button {{action "bakeCookie" "Scott" scottCookieValue}}>Bake Scott Cookie</button>
+<button {{action "burnCookie" "Scott"}}>Burn Scott Cookie</button>
 <p class="the-queens-cookie">Queens = {{cookieMonster.cookies.Queens}}</p>
 {{input value=queensCookieValue}}
-<button {{action 'bakeCookie' 'Queens' queensCookieValue}}>Bake Queens Cookie</button>
-<button {{action 'burnCookie' 'Queens'}}>Burn Queens Cookie</button>
+<button {{action "bakeCookie" "Queens" queensCookieValue}}>Bake Queens Cookie</button>
+<button {{action "burnCookie" "Queens"}}>Burn Queens Cookie</button>
 <p class="the-javascript-cookie">Javascript = {{cookieMonster.cookies.Javascript}}</p>
 {{input class="the-javascript-cookie-input" value=javascriptCookieValue}}
-<button class="the-bake-javascript-cookie-button" {{action 'bakeCookie' 'Javascript' javascriptCookieValue}}>Bake Javascript Cookie</button>
-<button class="the-burn-javascript-cookie-button" {{action 'burnCookie' 'Javascript'}}>Burn Brooklyn Cookie</button>
+<button class="the-bake-javascript-cookie-button" {{action "bakeCookie" "Javascript" javascriptCookieValue}}>Bake Javascript Cookie</button>
+<button class="the-burn-javascript-cookie-button" {{action "burnCookie" "Javascript"}}>Burn Brooklyn Cookie</button>
 
 <h4>All the Cookies...</h4>
 <p>{{cookieObject}}</p>
