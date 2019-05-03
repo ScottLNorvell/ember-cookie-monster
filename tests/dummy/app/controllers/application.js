@@ -1,11 +1,11 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { inject } from '@ember/service';
+import { computed } from '@ember/object';
 
-export default Ember.Controller.extend({
-  cookieMonster: Ember.inject.service(),
-  cookieObject: Ember.computed(
-    'cookieMonster.cookies.Scott',
-    'cookieMonster.cookies.Queens',
-    'cookieMonster.cookies.Javascript', function() {
+export default Controller.extend({
+  cookieMonster: inject.service(),
+  cookieObject: computed(
+    'cookieMonster.cookies.{Scott,Queens,Javascript}', function() {
     return JSON.stringify(this.get('cookieMonster.cookies'));
   }),
   actions: {

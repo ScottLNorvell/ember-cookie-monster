@@ -2,12 +2,12 @@ import {
   moduleFor,
   test
 } from 'ember-qunit';
-import Ember from 'ember';
+import { computed } from '@ember/object';
 
 moduleFor('service:cookie-monster', {
   subject: function(attrs, klass) {
-    klass.reopen({
-      _cookieDough: Ember.computed(function() {
+    klass.class.reopen({
+      _cookieDough: computed(function() {
         return 'scott=awesome; fake_user_id=42';
       })
     });
